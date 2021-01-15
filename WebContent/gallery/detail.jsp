@@ -1,12 +1,13 @@
-<%@page import="test.gallery.dto.GalleryDto"%>
 <%@page import="test.gallery.dao.GalleryDao"%>
+<%@page import="test.gallery.dto.GalleryDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-   int num=Integer.parseInt(request.getParameter("num"));
-   GalleryDto dto=GalleryDao.getInstance().getData(num);
-   
-%>
+	//자세히 보여줄 겔러리 item 번호를 읽어온다.
+	int num=Integer.parseInt(request.getParameter("num"));
+	//번호를 이용해서 겔러리 item 정보를 얻어온다.
+	GalleryDto dto=GalleryDao.getInstance().getData(num);
+%>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,6 +41,12 @@
 	</div>
    	<div class="card-body">
 	    <a href="list.jsp" class="card-link">목록으로 가기</a>
+	    <%if(dto.getPrevNum() != 0){ %>
+			<a href="detail.jsp?num=<%=dto.getPrevNum()%>">이전</a>
+		<%} %>
+		<%if(dto.getNextNum() != 0){ %>
+			<a href="detail.jsp?num=<%=dto.getNextNum()%>">다음</a>
+		<%} %>
   	</div>
 	  
 </div>
