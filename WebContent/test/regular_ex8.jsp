@@ -38,7 +38,7 @@
 	var reg82=new RegExp("abc", "g");
 	
 	var reg9=/^[\w]+$/;
-	var reg92=new RegExp("^[\\w]+$");
+	var reg92=new RegExp("^[\\w]+$"); //문자열로 작성할때는 역슬래시는 2개를 써야 한개로 인식된다.
 </script>
 </body>
 </html>
